@@ -1,4 +1,4 @@
-#define AppVersion "1.0.0"
+#define AppVersion "2.0.0"
 [Setup]
 AppId={{AB4A8B1B-C79D-432A-86C6-A2D557290811}
 AppName=ImageToPDF
@@ -23,7 +23,7 @@ DisableProgramGroupPage=yes
 LicenseFile=LICENSE
 ChangesAssociations=yes
 CloseApplications=yes
-AppMutex=Local\ImageToPDF_v1
+AppMutex=Local\ImageToPDF_v1,Local\ImageToPDF_v2
 
 [Languages]
 Name: "korean"; MessagesFile: "compiler:Languages\Korean.isl"
@@ -42,38 +42,43 @@ Name: "{group}\ImageToPDF"; Filename: "{app}\ImageToPDF.exe"
 Name: "{autodesktop}\이미지를 PDF로 엮기"; Filename: "{app}\ImageToPDF.exe"; Tasks: desktopicon
 
 [Registry]
-Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.jpg\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "이미지를 PDF로 엮기"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.jpg\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "PDF·이미지 엮기 / 페이지 편집"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.jpg\shell\ImageToPDF_ME"; ValueType: string; ValueName: "MultiSelectModel"; ValueData: "Player"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.jpg\shell\ImageToPDF_ME"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\ImageToPDF.exe,0"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.jpg\shell\ImageToPDF_ME\command"; ValueType: string; ValueName: ""; ValueData: """{app}\ImageToPDF.exe"" ""%1"""
-Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.jpeg\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "이미지를 PDF로 엮기"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.jpeg\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "PDF·이미지 엮기 / 페이지 편집"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.jpeg\shell\ImageToPDF_ME"; ValueType: string; ValueName: "MultiSelectModel"; ValueData: "Player"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.jpeg\shell\ImageToPDF_ME"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\ImageToPDF.exe,0"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.jpeg\shell\ImageToPDF_ME\command"; ValueType: string; ValueName: ""; ValueData: """{app}\ImageToPDF.exe"" ""%1"""
-Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.png\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "이미지를 PDF로 엮기"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.png\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "PDF·이미지 엮기 / 페이지 편집"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.png\shell\ImageToPDF_ME"; ValueType: string; ValueName: "MultiSelectModel"; ValueData: "Player"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.png\shell\ImageToPDF_ME"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\ImageToPDF.exe,0"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.png\shell\ImageToPDF_ME\command"; ValueType: string; ValueName: ""; ValueData: """{app}\ImageToPDF.exe"" ""%1"""
-Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.bmp\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "이미지를 PDF로 엮기"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.bmp\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "PDF·이미지 엮기 / 페이지 편집"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.bmp\shell\ImageToPDF_ME"; ValueType: string; ValueName: "MultiSelectModel"; ValueData: "Player"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.bmp\shell\ImageToPDF_ME"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\ImageToPDF.exe,0"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.bmp\shell\ImageToPDF_ME\command"; ValueType: string; ValueName: ""; ValueData: """{app}\ImageToPDF.exe"" ""%1"""
-Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.gif\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "이미지를 PDF로 엮기"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.gif\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "PDF·이미지 엮기 / 페이지 편집"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.gif\shell\ImageToPDF_ME"; ValueType: string; ValueName: "MultiSelectModel"; ValueData: "Player"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.gif\shell\ImageToPDF_ME"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\ImageToPDF.exe,0"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.gif\shell\ImageToPDF_ME\command"; ValueType: string; ValueName: ""; ValueData: """{app}\ImageToPDF.exe"" ""%1"""
-Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.tif\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "이미지를 PDF로 엮기"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.tif\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "PDF·이미지 엮기 / 페이지 편집"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.tif\shell\ImageToPDF_ME"; ValueType: string; ValueName: "MultiSelectModel"; ValueData: "Player"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.tif\shell\ImageToPDF_ME"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\ImageToPDF.exe,0"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.tif\shell\ImageToPDF_ME\command"; ValueType: string; ValueName: ""; ValueData: """{app}\ImageToPDF.exe"" ""%1"""
-Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.tiff\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "이미지를 PDF로 엮기"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.tiff\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "PDF·이미지 엮기 / 페이지 편집"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.tiff\shell\ImageToPDF_ME"; ValueType: string; ValueName: "MultiSelectModel"; ValueData: "Player"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.tiff\shell\ImageToPDF_ME"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\ImageToPDF.exe,0"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.tiff\shell\ImageToPDF_ME\command"; ValueType: string; ValueName: ""; ValueData: """{app}\ImageToPDF.exe"" ""%1"""
-Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.webp\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "이미지를 PDF로 엮기"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.webp\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "PDF·이미지 엮기 / 페이지 편집"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.webp\shell\ImageToPDF_ME"; ValueType: string; ValueName: "MultiSelectModel"; ValueData: "Player"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.webp\shell\ImageToPDF_ME"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\ImageToPDF.exe,0"
 Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.webp\shell\ImageToPDF_ME\command"; ValueType: string; ValueName: ""; ValueData: """{app}\ImageToPDF.exe"" ""%1"""
+
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.pdf\shell\ImageToPDF_ME"; ValueType: string; ValueName: ""; ValueData: "PDF·이미지 엮기 / 페이지 편집"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.pdf\shell\ImageToPDF_ME"; ValueType: string; ValueName: "MultiSelectModel"; ValueData: "Player"
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.pdf\shell\ImageToPDF_ME"; ValueType: string; ValueName: "Icon"; ValueData: "{app}\ImageToPDF.exe,0"
+Root: HKCU; Subkey: "Software\Classes\SystemFileAssociations\.pdf\shell\ImageToPDF_ME\command"; ValueType: string; ValueName: ""; ValueData: """{app}\ImageToPDF.exe"" ""%1"""
 
 [Run]
 Filename: "{app}\ImageToPDF.exe"; Description: "ImageToPDF 실행"; Flags: nowait postinstall skipifsilent

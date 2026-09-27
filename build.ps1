@@ -13,7 +13,7 @@ if ($LASTEXITCODE -ne 0) { throw 'Dependency installation failed.' }
 if ($LASTEXITCODE -ne 0) { throw 'Source checks failed.' }
 & $pythonExe tools\collect_licenses.py
 if ($LASTEXITCODE -ne 0) { throw 'License collection failed.' }
-& $pythonExe -m PyInstaller --noconfirm --clean --windowed --onedir --name ImageToPDF --icon assets\app.ico --add-data 'assets;assets' --add-data 'build\third-party-licenses;third-party-licenses' --version-file version_info.txt app.py
+& $pythonExe -m PyInstaller --noconfirm --clean --windowed --onedir --name ImageToPDF --icon assets\app.ico --add-data 'assets;assets' --add-data 'build\third-party-licenses;third-party-licenses' --collect-all pypdfium2 --collect-all pypdfium2_raw --version-file version_info.txt app.py
 if ($LASTEXITCODE -ne 0) { throw 'Application build failed.' }
 $reportPath = Join-Path $PSScriptRoot 'tools\frozen-report.json'
 $testProcess = Start-Process -FilePath '.\dist\ImageToPDF\ImageToPDF.exe' -ArgumentList ('--self-test "' + $reportPath + '"') -WindowStyle Hidden -Wait -PassThru
@@ -25,10 +25,10 @@ if (-not $InnoCompiler) {
     $InnoCompiler = $candidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 }
 if (-not $InnoCompiler) { throw 'Install Inno Setup and pass -InnoCompiler with the path to ISCC.exe.' }
-& $InnoCompiler installer.iss
+& $InnoCompiler /Qp installer.iss
 if ($LASTEXITCODE -ne 0) { throw 'Installer build failed.' }
 Copy-Item -LiteralPath README.md,LICENSE -Destination dist\ImageToPDF
-Compress-Archive -Path dist\ImageToPDF -DestinationPath release\ImageToPDF-Portable-1.0.0-x64.zip -Force
-$hashLines = Get-ChildItem release -File | Where-Object { $_.Extension -in '.exe', '.zip' } | Sort-Object Name | ForEach-Object { (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLower() + '  ' + $_.Name }
+Compress-Archive -Path dist\ImageToPDF -DestinationPath release\ImageToPDF-Portable-2.0.0-x64.zip -Force
+$hashLines = Get-ChildItem release -File | Where-Object { $_.Name -like '*-2.0.0-x64.*' -and $_.Extension -in '.exe', '.zip' } | Sort-Object Name | ForEach-Object { (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLower() + '  ' + $_.Name }
 Set-Content -LiteralPath release\SHA256SUMS.txt -Value $hashLines -Encoding ascii
 Write-Host 'Build and packaged regression checks completed.'

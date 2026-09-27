@@ -6,7 +6,7 @@ import sys
 
 destination = Path('build/third-party-licenses')
 destination.mkdir(parents=True, exist_ok=True)
-for package in ('Pillow', 'pypdf', 'typing_extensions'):
+for package in ('Pillow', 'pypdf', 'typing_extensions', 'pypdfium2', 'cryptography', 'cffi', 'pycparser'):
     dist = distribution(package)
     for file in dist.files or []:
         if 'license' in str(file).lower() or 'copying' in str(file).lower():
