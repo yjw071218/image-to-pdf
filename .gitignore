@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+release/
+inbox/
+*.lnk
+*.spec
+tools/InnoSetup/
+tools/innosetup-*.exe
+tools/innosetup-*.issig
+tools/*report*
+tools/*log
+tools/*.local.py
+설치.cmd
+제거.cmd
