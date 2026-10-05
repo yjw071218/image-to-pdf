@@ -1,4 +1,4 @@
-#define AppVersion "2.1.0"
+#define AppVersion "2.1.1"
 [Setup]
 AppId={{AB4A8B1B-C79D-432A-86C6-A2D557290811}
 AppName=ImageToPDF

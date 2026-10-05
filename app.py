@@ -7,7 +7,7 @@ import re
 import sys
 import uuid
 
-VERSION = '2.1.0'
+VERSION = '2.1.1'
 BASE = Path(__file__).resolve().parent
 DATA_DIR = Path(os.environ.get('LOCALAPPDATA', str(Path.home()))) / 'ImageToPDF'
 INBOX = DATA_DIR / 'inbox-v2'

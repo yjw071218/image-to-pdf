@@ -36,7 +36,7 @@ class App:
         except ImportError:
             pass
         self.controls = []
-        root.title('ImageToPDF 2.1.0 · PDF 병합 / 페이지 편집')
+        root.title('ImageToPDF 2.1.1 · PDF 병합 / 페이지 편집')
         icon = Path(__file__).resolve().parent / 'assets' / 'app.ico'
         if icon.exists():
             root.iconbitmap(str(icon))
@@ -217,7 +217,7 @@ class App:
                         ("dwReserved", wintypes.DWORD), ("FlagsEx", wintypes.DWORD)]
 
         try:
-            buffer_size = 1048576
+            buffer_size = 32767
             buffer = ctypes.create_unicode_buffer(buffer_size)
             ofn = OPENFILENAMEW()
             ofn.lStructSize = ctypes.sizeof(OPENFILENAMEW)

@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.1.0
+## 2.1.1
 
 - Combine PDFs and images in one page-oriented editor; preview actual PDF pages.
 - Delete specific pages using the list or page ranges, and extract selected pages.
