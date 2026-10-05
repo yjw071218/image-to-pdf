@@ -1,4 +1,4 @@
-# Release validation — 2.0.0
+# Release validation — 2.1.0
 
 Validated on Windows 11 x64, Python 3.10.11, Pillow 12.3.0, pypdf 6.19.0, PDFium/pypdfium2 5.13.0, cryptography 50.0.1, PyInstaller 6.22.3 and Inno Setup 7.1.0.
 

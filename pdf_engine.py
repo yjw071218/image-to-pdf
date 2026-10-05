@@ -263,7 +263,7 @@ def export_pdf(items, destination, options=None, progress=lambda n: None, cancel
                 raise
             except Exception as exc:
                 raise RuntimeError(f'{item.label}\n{exc}') from exc
-        writer.add_metadata({'/Producer': 'ImageToPDF 2.0.0'})
+        writer.add_metadata({'/Producer': 'ImageToPDF 2.1.0'})
         check_cancel()
         with tempfile.NamedTemporaryFile(dir=target.parent, suffix='.pdf', delete=False) as output:
             temporary = output.name

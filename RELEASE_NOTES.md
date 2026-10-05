@@ -1,4 +1,4 @@
-## ImageToPDF 2.0.0
+## ImageToPDF 2.1.0
 
 PDF 병합·페이지 편집과 용지 맞춤을 추가한 새 버전입니다.
 
@@ -15,8 +15,8 @@ PDF 병합·페이지 편집과 용지 맞춤을 추가한 새 버전입니다.
 
 ### 다운로드
 
-- **ImageToPDF-Setup-2.0.0-x64.exe**: 권장 설치 파일. 기존 설치판 업데이트 및 PDF/이미지 우클릭 메뉴 등록.
-- **ImageToPDF-Portable-2.0.0-x64.zip**: 무설치. 압축을 풀고 ImageToPDF.exe 실행.
+- **ImageToPDF-Setup-2.1.0-x64.exe**: 권장 설치 파일. 기존 설치판 업데이트 및 PDF/이미지 우클릭 메뉴 등록.
+- **ImageToPDF-Portable-2.1.0-x64.zip**: 무설치. 압축을 풀고 ImageToPDF.exe 실행.
 - **SHA256SUMS.txt**: 다운로드 파일 검증용 해시.
 
 Windows 10/11 64비트. Python 설치나 관리자 권한이 필요하지 않습니다. 설치 파일은 코드 서명되지 않았습니다.

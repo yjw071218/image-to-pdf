@@ -4,11 +4,11 @@ VSVersionInfo(
   kids=[StringFileInfo([StringTable('040904B0', [
     StringStruct('CompanyName', 'yjw071218'),
     StringStruct('FileDescription', 'ImageToPDF - Merge PDFs and images, edit pages'),
-    StringStruct('FileVersion', '2.0.0'),
+    StringStruct('FileVersion', '2.1.0'),
     StringStruct('InternalName', 'ImageToPDF'),
     StringStruct('OriginalFilename', 'ImageToPDF.exe'),
     StringStruct('ProductName', 'ImageToPDF'),
-    StringStruct('ProductVersion', '2.0.0'),
+    StringStruct('ProductVersion', '2.1.0'),
     StringStruct('LegalCopyright', 'Copyright (c) 2026 yjw071218')
   ])]), VarFileInfo([VarStruct('Translation', [1033, 1200])])]
 )

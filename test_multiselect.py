@@ -32,7 +32,7 @@ def test():
     try:
         with tempfile.TemporaryDirectory() as directory:
             paths = []
-            for i in range(20):
+            for i in range(100):
                 path = Path(directory) / f'테스트 문서 {i}{".png" if i % 2 == 0 else ".pdf"}'
                 if i % 2 == 0:
                     Image.new('RGB', (10, 10), 'red').save(path)
@@ -41,15 +41,15 @@ def test():
                 paths.append(str(path))
             for path in paths:
                 processes.append(subprocess.Popen(command + [path], env={**os.environ, 'IMAGETOPDF_TEST_SESSION': session}))
-            deadline = time.monotonic() + 20
+            deadline = time.monotonic() + 100
             while len(ui.paths) < len(paths) and time.monotonic() < deadline:
                 root.update()
                 time.sleep(.03)
             assert set(ui.paths) == set(paths), (len(ui.paths), len(paths))
-            assert len(ui.items) == 30, 'All PDF pages must be collected'
+            assert len(ui.items) == 150, 'All PDF pages must be collected'
             for process in processes:
                 assert process.wait(timeout=10) == 0
-            print('PASS: 20 simultaneous image/PDF invocations collected as 30 pages in one isolated window, including Korean/space paths')
+            print('PASS: 100 simultaneous image/PDF invocations collected as 150 pages in one isolated window, including Korean/space paths')
     finally:
         ui.dispose()
         kernel.CloseHandle(ctypes.c_void_p(handle))

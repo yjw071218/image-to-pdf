@@ -28,7 +28,7 @@ if (-not $InnoCompiler) { throw 'Install Inno Setup and pass -InnoCompiler with 
 & $InnoCompiler /Qp installer.iss
 if ($LASTEXITCODE -ne 0) { throw 'Installer build failed.' }
 Copy-Item -LiteralPath README.md,LICENSE -Destination dist\ImageToPDF
-Compress-Archive -Path dist\ImageToPDF -DestinationPath release\ImageToPDF-Portable-2.0.0-x64.zip -Force
-$hashLines = Get-ChildItem release -File | Where-Object { $_.Name -like '*-2.0.0-x64.*' -and $_.Extension -in '.exe', '.zip' } | Sort-Object Name | ForEach-Object { (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLower() + '  ' + $_.Name }
+Compress-Archive -Path dist\ImageToPDF -DestinationPath release\ImageToPDF-Portable-2.1.0-x64.zip -Force
+$hashLines = Get-ChildItem release -File | Where-Object { $_.Name -like '*-2.1.0-x64.*' -and $_.Extension -in '.exe', '.zip' } | Sort-Object Name | ForEach-Object { (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLower() + '  ' + $_.Name }
 Set-Content -LiteralPath release\SHA256SUMS.txt -Value $hashLines -Encoding ascii
 Write-Host 'Build and packaged regression checks completed.'

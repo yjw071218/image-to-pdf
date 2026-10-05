@@ -30,8 +30,13 @@ class App:
         self.poll_job = None
         self.photo = None
         self.closed = False
+        try:
+            import windnd
+            windnd.hook_dropfiles(root, func=self.add)
+        except ImportError:
+            pass
         self.controls = []
-        root.title('ImageToPDF 2.0.0 · PDF 병합 / 페이지 편집')
+        root.title('ImageToPDF 2.1.0 · PDF 병합 / 페이지 편집')
         icon = Path(__file__).resolve().parent / 'assets' / 'app.ico'
         if icon.exists():
             root.iconbitmap(str(icon))
@@ -197,6 +202,46 @@ class App:
         self.schedule_preview()
 
     def add_dialog(self):
+        import ctypes
+        from ctypes import wintypes
+        import os
+
+        class OPENFILENAMEW(ctypes.Structure):
+            _fields_ = [("lStructSize", wintypes.DWORD), ("hwndOwner", wintypes.HWND), ("hInstance", wintypes.HINSTANCE),
+                        ("lpstrFilter", wintypes.LPCWSTR), ("lpstrCustomFilter", wintypes.LPWSTR), ("nMaxCustFilter", wintypes.DWORD),
+                        ("nFilterIndex", wintypes.DWORD), ("lpstrFile", wintypes.LPWSTR), ("nMaxFile", wintypes.DWORD),
+                        ("lpstrFileTitle", wintypes.LPWSTR), ("nMaxFileTitle", wintypes.DWORD), ("lpstrInitialDir", wintypes.LPCWSTR),
+                        ("lpstrTitle", wintypes.LPCWSTR), ("Flags", wintypes.DWORD), ("nFileOffset", wintypes.WORD),
+                        ("nFileExtension", wintypes.WORD), ("lpstrDefExt", wintypes.LPCWSTR), ("lCustData", wintypes.LPARAM),
+                        ("lpfnHook", ctypes.c_void_p), ("lpTemplateName", wintypes.LPCWSTR), ("pvReserved", ctypes.c_void_p),
+                        ("dwReserved", wintypes.DWORD), ("FlagsEx", wintypes.DWORD)]
+
+        try:
+            buffer_size = 1048576
+            buffer = ctypes.create_unicode_buffer(buffer_size)
+            ofn = OPENFILENAMEW()
+            ofn.lStructSize = ctypes.sizeof(OPENFILENAMEW)
+            self.root.update_idletasks()
+            ofn.hwndOwner = ctypes.windll.user32.GetParent(self.root.winfo_id())
+            ofn.Flags = 0x00080204
+            ofn.lpstrTitle = "PDF 또는 이미지 추가"
+            ofn.lpstrFilter = "PDF 및 이미지\0" + ";".join("*" + x for x in EXTENSIONS) + "\0PDF\0*.pdf\0모든 파일\0*.*\0\0"
+            ofn.lpstrFile = ctypes.cast(buffer, wintypes.LPWSTR)
+            ofn.nMaxFile = buffer_size
+
+            if ctypes.windll.comdlg32.GetOpenFileNameW(ctypes.byref(ofn)):
+                chars = buffer[:]
+                end_idx = chars.find('\0\0')
+                if end_idx != -1:
+                    chars = chars[:end_idx]
+                paths = chars.split('\0')
+                if len(paths) > 1:
+                    self.add([os.path.join(paths[0], p) for p in paths[1:] if p])
+                elif paths and paths[0]:
+                    self.add([paths[0]])
+            return
+        except Exception:
+            pass
         self.add(filedialog.askopenfilenames(title='PDF 또는 이미지 추가', filetypes=[('PDF 및 이미지', ' '.join('*' + x for x in EXTENSIONS)), ('PDF', '*.pdf'), ('모든 파일', '*.*')]))
 
     def add(self, paths):
